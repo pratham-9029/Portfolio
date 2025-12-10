@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">Portfolio</a>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
@@ -46,6 +48,7 @@
                         Hi, I'm a 
                         <span class="highlight">Web Developer</span>
                     </h1>
+                    <h2 class="hero-name">Pratham Prajapati</h2>
                     <p class="hero-subtitle">
                         Crafting beautiful, responsive, and user-friendly web experiences with modern technologies and best practices.
                     </p>
@@ -113,12 +116,11 @@
                         <span class="skill-tag">HTML5</span>
                         <span class="skill-tag">CSS3</span>
                         <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Bootstrap</span> 
                         <span class="skill-tag">TypeScript</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <!-- <div class="skill-category">
                     <div class="skill-icon">
                         <i class="fas fa-server"></i>
                     </div>
@@ -131,7 +133,7 @@
                         <span class="skill-tag">PostgreSQL</span>
                         <span class="skill-tag">REST APIs</span>
                     </div>
-                </div>
+                </div> -->
                 <div class="skill-category">
                     <div class="skill-icon">
                         <i class="fas fa-tools"></i>
@@ -139,11 +141,7 @@
                     <h3>Tools & Workflow</h3>
                     <div class="skill-list">
                         <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Webpack</span>
-                        <span class="skill-tag">Sass</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">GitHub</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -156,8 +154,6 @@
                         <span class="skill-tag">UI/UX Design</span>
                         <span class="skill-tag">Accessibility</span>
                         <span class="skill-tag">Performance</span>
-                        <span class="skill-tag">SEO</span>
-                        <span class="skill-tag">Cross-browser</span>
                     </div>
                 </div>
             </div>
@@ -174,22 +170,22 @@
                         <img src="https://pixabay.com/get/gfa6ec59d23e3253fecc7c212114ad27715c241d471e20b200f674a5e52386480ae9cdffb1de51add18687ce715b84b955f29886ca526555daa4027404ddba08a_1280.jpg" alt="E-commerce Platform">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">E-commerce Platform</h3>
+                        <h3 class="project-title">Snap Folio</h3>
                         <p class="project-description">
                             A full-featured e-commerce platform with user authentication, payment integration, 
                             and admin dashboard. Built with modern web technologies for optimal performance.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Bootstrap</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link">
+                            <a href="https://pr-02-bt-port-folio.vercel.app/" class="project-link">
                                 <i class="fas fa-external-link-alt"></i>
                                 Live Demo
                             </a>
-                            <a href="#" class="project-link">
+                            <a href="https://github.com/pratham-9029/PR-02-BT-PortFolio?tab=readme-ov-file" class="project-link">
                                 <i class="fab fa-github"></i>
                                 Source Code
                             </a>
@@ -404,6 +400,34 @@
             e.preventDefault();
             alert('Thank you for your message! I\'ll get back to you soon.');
             this.reset();
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or respect system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
         });
     </script>
 </body>
