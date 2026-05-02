@@ -1,0 +1,17 @@
+<%- include('partials/header', {
+  title,
+  profile: { name: 'Portfolio', github: '#', linkedin: '#', email: '#' }
+}) %>
+
+<main class="not-found d-flex align-items-center">
+  <div class="container text-center">
+    <p class="eyebrow">404</p>
+    <h1 class="display-5 fw-bold">This page has not grown here yet.</h1>
+    <p class="text-secondary">Head back to the portfolio garden.</p>
+    <a href="/" class="btn btn-success rounded-pill px-4">Go Home</a>
+  </div>
+</main>
+
+<%- include('partials/footer', {
+  profile: { name: 'Portfolio', github: '#', linkedin: '#', email: '#' }
+}) %>

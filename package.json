@@ -1,0 +1,35 @@
+{
+  "name": "pratham-portfolio",
+  "version": "1.0.0",
+  "description": "A Node.js, Express, and EJS portfolio built with MVC architecture.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "portfolio",
+    "express",
+    "ejs",
+    "bootstrap"
+  ],
+  "author": "Pratham Prajapati",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^9.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratham-9029/Portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pratham-9029/Portfolio/issues"
+  },
+  "homepage": "https://github.com/pratham-9029/Portfolio#readme"
+}

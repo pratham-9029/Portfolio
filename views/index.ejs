@@ -1,0 +1,189 @@
+<%- include('partials/header', { title, profile }) %>
+
+<main id="home">
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <p class="eyebrow mb-3">Minimal backend garden</p>
+          <h1 class="hero-title mb-4">
+            <span><%= profile.name %></span>
+            <strong><%= profile.role %></strong>
+          </h1>
+          <p class="hero-copy mb-4"><%= profile.bio %></p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-success rounded-pill px-4 py-2">
+              <i class="fa-solid fa-seedling me-2"></i>Explore Projects
+            </a>
+            <a href="/download-resume" class="btn btn-outline-light rounded-pill px-4 py-2">
+              <i class="fa-solid fa-download me-2"></i>Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="portrait-panel">
+            <img src="<%= profile.avatar %>" alt="<%= profile.name %> portrait" class="portrait-img">
+            <div class="status-chip">
+              <span></span>
+              Available for backend work
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section-block">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-5">
+          <p class="eyebrow">About</p>
+          <h2 class="section-heading">I build server-side systems with clean, steady foundations.</h2>
+        </div>
+        <div class="col-lg-7">
+          <p class="section-copy">
+            I enjoy turning product ideas into reliable Express applications, REST APIs, and database-backed features.
+            My focus is simple architecture, readable code, and learning the pieces that make backend systems easier to maintain.
+          </p>
+          <div class="row g-3 mt-3">
+            <% stats.forEach((stat) => { %>
+              <div class="col-sm-4">
+                <div class="stat-tile">
+                  <span><%= stat.value %></span>
+                  <p><%= stat.label %></p>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="section-block">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
+        <div>
+          <p class="eyebrow">Tech Stack</p>
+          <h2 class="section-heading mb-0">Bento grid of tools I keep tending.</h2>
+        </div>
+        <p class="section-note mb-0">
+          A compact map of the technologies and habits behind my projects.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <% techStack.forEach((item) => { %>
+          <article class="bento-card <%= item.size === 'large' ? 'bento-large' : '' %> <%= item.size === 'wide' ? 'bento-wide' : '' %>">
+            <div class="bento-icon">
+              <i class="fa-solid <%= item.icon %>"></i>
+            </div>
+            <h3><%= item.title %></h3>
+            <p><%= item.description %></p>
+            <div class="d-flex flex-wrap gap-2">
+              <% item.skills.forEach((skill) => { %>
+                <span class="garden-tag"><%= skill %></span>
+              <% }) %>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section-block">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2 class="section-heading mb-0">Dynamic projects rendered from controller data.</h2>
+        </div>
+        <p class="section-note mb-0">
+          
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <% projects.forEach((project) => { %>
+          <div class="col-lg-4 col-md-6">
+            <article class="project-card h-100">
+              <img src="<%= project.image %>" alt="<%= project.title %> preview" class="project-image">
+              <div class="project-body">
+                <h3><%= project.title %></h3>
+                <p><%= project.description %></p>
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                  <% project.technologies.forEach((technology) => { %>
+                    <span class="garden-tag"><%= technology %></span>
+                  <% }) %>
+                </div>
+                <div class="d-flex gap-2 mt-auto">
+                  <% if (project.liveUrl && project.liveUrl !== '#') { %>
+                    <a href="<%= project.liveUrl %>" class="btn btn-sm btn-success rounded-pill px-3" target="_blank" rel="noreferrer">
+                      <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Live
+                    </a>
+                  <% } %>
+                  <a href="<%= project.sourceUrl %>" class="btn btn-sm btn-outline-light rounded-pill px-3" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github me-1"></i>Code
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-block contact-section">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-heading">Let’s grow a useful backend together.</h2>
+          <p class="section-copy">
+            Send a message and the Express controller will receive the form data. Right now it logs submissions on the server, ready to be replaced with Nodemailer later.
+          </p>
+          <div class="contact-list">
+            <a href="mailto:<%= profile.email %>"><i class="fa-solid fa-envelope"></i><%= profile.email %></a>
+            <a href="tel:<%= profile.phone.replaceAll(' ', '') %>"><i class="fa-solid fa-phone"></i><%= profile.phone %></a>
+            <a href="https://www.google.com/maps/place/Gujarat,+India" target="_blank" rel="noreferrer"><i class="fa-solid fa-location-dot"></i><%= profile.location %></a>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <% if (contactStatus === 'success') { %>
+            <div class="alert alert-success rounded-4 border-0" role="alert">
+              Thanks for reaching out. Your message was logged successfully.
+            </div>
+          <% } %>
+          <form action="/contact" method="POST" class="contact-form">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="col-12">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+              </div>
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-success rounded-pill px-4 py-2">
+                  <i class="fa-solid fa-paper-plane me-2"></i>Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer', { profile }) %>
