@@ -7,7 +7,7 @@ const profile = {
   github: 'https://github.com/pratham-9029',
   linkedin: '#',
   twitter: '#',
-  avatar: '/images/profile.jfif',
+  avatar: '/images/profile.png',
   bio:
     'Aspiring Backend Developer with a strong focus on Node.js and server-side architecture. Proficient in building RESTful APIs using Express.js and managing databases with MongoDB. Strong foundation in Data Structures and Algorithms and C programming.',
 };
