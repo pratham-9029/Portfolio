@@ -20,10 +20,10 @@ const downloadResume = (req, res) => {
     '..',
     'public',
     'resume',
-    'Pratham-Prajapati-Resume.pdf'
+    'Pratham.pdf'
   );
 
-  res.download(resumePath, 'Pratham-Prajapati-Resume.pdf', (error) => {
+  res.download(resumePath, 'Pratham.pdf', (error) => {
     if (!res.headersSent && error) {
       res.status(404).send('Resume file not found.');
     }
